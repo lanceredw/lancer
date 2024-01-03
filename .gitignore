@@ -1,0 +1,9 @@
+.idea
+
+bin
+log
+note
+
+docker/app
+docker/clickhouse_data
+docker/mysql_data

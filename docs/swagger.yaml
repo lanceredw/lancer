@@ -1,0 +1,63 @@
+definitions:
+  request.UserCreateRequest:
+    properties:
+      password:
+        type: string
+      user_name:
+        type: string
+    required:
+    - password
+    - user_name
+    type: object
+  response.ResultData:
+    properties:
+      code:
+        type: integer
+      data: {}
+      msg:
+        type: string
+    type: object
+  response.UserCreateResponse:
+    properties:
+      code:
+        type: integer
+      data: {}
+      msg:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/user/create:
+    post:
+      consumes:
+      - application/json
+      description: |
+        create user
+      parameters:
+      - description: request message
+        in: body
+        name: Request
+        required: true
+        schema:
+          $ref: '#/definitions/request.UserCreateRequest'
+      - description: request message
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.UserCreateResponse'
+        "202":
+          description: Accepted
+          schema:
+            $ref: '#/definitions/response.ResultData'
+      summary: UserManage
+      tags:
+      - UserManage
+swagger: "2.0"

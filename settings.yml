@@ -1,0 +1,31 @@
+mode:
+  develop: true
+  language: zh
+
+
+server:
+  port: 8081
+
+jwt:
+  secret: lancer
+  expire: 10080 # minute
+
+db:
+  dsn: lancer:lancer123@tcp(127.0.0.1:3306)/lancer?charset=utf8&parseTime=True&loc=Local&timeout=2000ms
+  maxIdleConn: 10 # maximum number of idle connections
+  maxOpenConn: 10 # maximum number of open connections
+
+redis:
+  url: 127.0.0.1:6379
+  password: lancer
+  db: 0
+
+etcd:
+  endpoints:
+    - 127.0.0.1:2379
+  path: /Config/
+
+log:
+  MaxSize: 10      # maximum size of log file (M), automatically split after exceeding the limit
+  MaxBackups: 100  # maximum number of retained old files
+  MaxAge: 90      # maximum number of days to retain old files
