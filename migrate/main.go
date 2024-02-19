@@ -12,7 +12,7 @@ func main() {
 
 	cmd.StartMigrate()
 
-	method.MigrateRun(migratefile.InitTable{}) //init table
+	method.MigrateRun(&migratefile.InitTable{}) //init table
 
 	method.Init()
 

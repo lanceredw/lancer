@@ -17,7 +17,7 @@ func (migrate *InitTable) After() {
 
 func (migrate *InitTable) Run() {
 	err := global.DB.Migrator().AutoMigrate(&model.LancerActionLog{},
-		&model.LancerMigrateLog{},
+		//&model.LancerMigrateLog{},
 		&model.LancerUser{},
 		&model.LancerRbacMenu{},
 		&model.LancerRbacRole{},
@@ -29,3 +29,16 @@ func (migrate *InitTable) Run() {
 	fmt.Println("init table successfully")
 
 }
+
+/**
+need to create lancer_migrate_log
+
+create table lancer_migrate_log
+(
+    id         bigint       not null
+        primary key,
+    name       varchar(255) not null comment 'name',
+    created_at datetime     not null comment 'exec migrate time'
+)
+    comment 'migrate log';
+*/
