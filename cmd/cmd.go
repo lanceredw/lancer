@@ -19,6 +19,9 @@ import (
 )
 
 func Start() {
+	var (
+		err error
+	)
 
 	// init setting
 	conf.InitSettings()
@@ -49,10 +52,30 @@ func Start() {
 
 	global.Redis = rdb
 
+	//TODO 1.启动的时候执行一次
+	//TODO 2.每天12点后会自动执行一次新的日志文件生成
+	//logFilePath := filepath.Join("./log", time.Now().Format("2006-01-02")+".log")
+	//
+	//// 以追加模式打开日志文件
+	//logFile, err := os.OpenFile(logFilePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//defer logFile.Close()
+
+	//slog日志
+	//global.SLogger = slog.New(slog.NewJSONHandler(logFile, &slog.HandlerOptions{
+	//	AddSource:   true,
+	//	Level:       slog.LevelDebug,
+	//	ReplaceAttr: nil,
+	//}))
+
 	// init gin
 	r := gin.New()
+	//gin.DefaultWriter = io.MultiWriter(logFile)
 	r.Use(ginzap.Ginzap(global.Logger.Desugar(), time.DateTime, true))
 	r.Use(ginzap.RecoveryWithZap(global.Logger.Desugar(), true))
+	//r.Use(middleware.SlogMiddleware(global.SLogger))
 	router.InitRouter(r)
 
 	//init validation
@@ -82,6 +105,7 @@ func Start() {
 	fmt.Printf("application :http://%s:%s \n", localIP, port)
 	fmt.Printf("swagger doc: http://%s:%s/swagger/index.html \n", network.GetLocalIP(), port)
 
+	//global.SLogger.Info("Server Start...")
 	global.Logger.Info("Server Start...")
 	go func() {
 		// lister serve

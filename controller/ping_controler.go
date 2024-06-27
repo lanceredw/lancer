@@ -21,6 +21,8 @@ func NewPingController() *PingController {
 
 func (controller *PingController) Ping(c *gin.Context) {
 
+	//global.SLogger.Info(c.GetString(constant.RequestId), slog.String("111", "222"))
+
 	response := make(map[string]interface{})
 
 	response["code"] = http.StatusOK

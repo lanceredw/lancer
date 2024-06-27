@@ -6,6 +6,7 @@ import (
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"lancer/data"
+	"log/slog"
 )
 
 //database
@@ -18,7 +19,8 @@ var (
 //logger
 
 var (
-	Logger *zap.SugaredLogger
+	Logger  *zap.SugaredLogger
+	SLogger *slog.Logger
 )
 
 // Snowflake
