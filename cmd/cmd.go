@@ -54,6 +54,10 @@ func Start() {
 
 	//TODO 1.启动的时候执行一次
 	//TODO 2.每天12点后会自动执行一次新的日志文件生成
+	//TODO 3.判断是否需要生成新的日志，每次执行日志年月日都存储到变量，判断到不一样的时候生成新的日志文件
+	//if today != time.Now().Format("2006-01-02") {
+	//	//TODO 4.生成新的日志文件
+	//}
 	//logFilePath := filepath.Join("./log", time.Now().Format("2006-01-02")+".log")
 	//
 	//// 以追加模式打开日志文件
