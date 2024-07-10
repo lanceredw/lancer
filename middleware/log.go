@@ -30,6 +30,7 @@ func SlogMiddleware(logger *slog.Logger) gin.HandlerFunc {
 		seconds := endTime.Sub(startTime).Seconds()
 
 		// 记录请求日志
+		log.InfoContext(c, "http request", slog.String("method", c.Request.Method), slog.String("path", c.Request.URL.Path), slog.String("query", c.Request.URL.RawQuery), slog.String("ip", c.ClientIP()), slog.String("user-agent", c.Request.UserAgent()), slog.Int("status", c.Writer.Status()), slog.Float64("seconds", seconds))
 		log.Info("http request", slog.String("method", c.Request.Method), slog.String("path", c.Request.URL.Path), slog.String("query", c.Request.URL.RawQuery), slog.String("ip", c.RemoteIP()), slog.String("user-agent", c.Request.UserAgent()), slog.Int("status", c.Writer.Status()), slog.Float64("seconds", seconds))
 
 	}
