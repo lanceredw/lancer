@@ -11,6 +11,7 @@ import (
 	"lancer/conf"
 	"lancer/global"
 	"lancer/router"
+	"lancer/scheduled"
 	"lancer/worker"
 	"net/http"
 	"os"
@@ -101,6 +102,9 @@ func Start() {
 		Addr:    fmt.Sprintf(":%v", port),
 		Handler: r,
 	}
+
+	//run cron
+	scheduled.NewCron()
 
 	//run worker
 	worker.RunWork()

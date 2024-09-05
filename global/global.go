@@ -4,6 +4,7 @@ import (
 	"github.com/redis/go-redis/v9"
 	"github.com/sony/sonyflake"
 	"go.uber.org/zap"
+	"gopkg.in/natefinch/lumberjack.v2"
 	"gorm.io/gorm"
 	"lancer/data"
 	"log/slog"
@@ -19,8 +20,9 @@ var (
 //logger
 
 var (
-	Logger  *zap.SugaredLogger
-	SLogger *slog.Logger
+	Logger        *zap.SugaredLogger
+	SLogger       *slog.Logger
+	LumberjackLog *lumberjack.Logger
 )
 
 // Snowflake
