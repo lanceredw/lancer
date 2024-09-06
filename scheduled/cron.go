@@ -36,6 +36,6 @@ func CronJobs() {
 	if err != nil {
 		global.Logger.Error("添加定时任务错误:", err)
 	} else {
-		global.Logger.Error("添加定时任务日志滚动成功:", logEntryID)
+		global.Logger.Info("添加定时任务日志滚动成功:", logEntryID)
 	}
 }
