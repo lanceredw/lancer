@@ -14,6 +14,9 @@ func NewCron() {
 
 	//run the timer
 	Cron.Start()
+
+	//load the tasks
+	LoadTasks()
 }
 
 func LoadTasks() {
@@ -26,7 +29,7 @@ func LoadTasks() {
 func CronJobs() {
 
 	//每天晚上进行日志滚动
-	logSpec := "0 0 0 * * *"
+	logSpec := "10 0 0 * * *"
 	logEntryID, err := Cron.AddFunc(logSpec, func() {
 		StartRotate()
 	})
