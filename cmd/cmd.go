@@ -78,7 +78,7 @@ func Start() {
 	// init gin
 	r := gin.New()
 	//gin.DefaultWriter = io.MultiWriter(logFile)
-	r.Use(ginzap.Ginzap(global.Logger.Desugar(), time.DateTime, true))
+	r.Use(ginzap.GinzapWithConfig(global.Logger.Desugar(), &ginzap.Config{UTC: false}))
 	r.Use(ginzap.RecoveryWithZap(global.Logger.Desugar(), true))
 	//r.Use(middleware.SlogMiddleware(global.SLogger))
 	router.InitRouter(r)

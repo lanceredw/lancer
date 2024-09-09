@@ -49,6 +49,7 @@ func getWriteSyncer() zapcore.WriteSyncer {
 		MaxBackups: viper.GetInt("log.MaxBackups"), // maximum number of retained old files
 		MaxAge:     viper.GetInt("log.MaxAge"),     // maximum number of days to retain old files
 		Compress:   false,
+		LocalTime:  true,
 	}
 
 	return zapcore.AddSync(lumberJackSyncer)
