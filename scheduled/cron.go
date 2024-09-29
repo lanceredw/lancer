@@ -29,7 +29,7 @@ func LoadTasks() {
 func CronJobs() {
 
 	//每天晚上进行日志滚动
-	logSpec := "10 0 0 * * *"
+	logSpec := "1 0 0 * * *"
 	logEntryID, err := Cron.AddFunc(logSpec, func() {
 		StartRotate()
 	})
